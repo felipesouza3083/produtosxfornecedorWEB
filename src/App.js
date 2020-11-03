@@ -1,16 +1,18 @@
 import React from 'react';
+import { HashRouter, NavLink, Route } from 'react-router-dom';
+import Fornecedor from './Fornecedor';
 
 class App extends React.Component {
   render() {
     return (
-      <>
+      <HashRouter>
         <nav className="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-          <a className="navbar-brand" href="index.html">Start Bootstrap</a>          
+          <a className="navbar-brand" href="index.html">Start Bootstrap</a>
           <ul className="navbar-nav ml-auto mr-0 mr-md-3 my-2 my-md-0">
             <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i className="fas fa-user fa-fw"></i></a>
               <div className="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                <a className="dropdown-item" href="login.html">Logout</a>
+                <a className="dropdown-item" href="#">Logout</a>
               </div>
             </li>
           </ul>
@@ -21,19 +23,19 @@ class App extends React.Component {
               <div className="sb-sidenav-menu">
                 <div className="nav">
                   <div className="sb-sidenav-menu-heading">Core</div>
-                  <a className="nav-link" href="index.html">
+                  <NavLink className="nav-link" to="/">
                     <div className="sb-nav-link-icon"><i className="fas fa-tachometer-alt"></i></div>
                                 Dashboard
-                            </a>                  
+                  </NavLink>
                   <div className="sb-sidenav-menu-heading">Cadastros</div>
-                  <a className="nav-link" href="charts.html">
+                  <NavLink className="nav-link" to="/fornecedor">
                     <div className="sb-nav-link-icon"><i className="fas fa-columns"></i></div>
                                 Fornecedores
-                            </a>
-                  <a className="nav-link" href="tables.html">
+                  </NavLink>
+                  <NavLink className="nav-link" to="/produto">
                     <div className="sb-nav-link-icon"><i className="fas fa-table"></i></div>
                                 Produtos
-                            </a>
+                  </NavLink>
                 </div>
               </div>
               <div className="sb-sidenav-footer">
@@ -43,6 +45,9 @@ class App extends React.Component {
             </nav>
           </div>
           <div id="layoutSidenav_content">
+            <main>
+              <Route path="/fornecedor" component={Fornecedor} />
+            </main>
             <footer className="py-4 bg-light mt-auto">
               <div className="container-fluid">
                 <div className="d-flex align-items-center justify-content-between small">
@@ -57,7 +62,7 @@ class App extends React.Component {
             </footer>
           </div>
         </div>
-      </>
+      </HashRouter>
     )
   }
 }
